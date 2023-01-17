@@ -14,7 +14,8 @@ USER_NAME="${7}"
 DESTINATION_REPOSITORY_USERNAME="${8}"
 TARGET_BRANCH="${9}"
 COMMIT_MESSAGE="${10}"
-TARGET_DIRECTORY="${11}"
+TAG_NAME="${11}"
+TARGET_DIRECTORY="${12}"
 
 if [ -z "$DESTINATION_REPOSITORY_USERNAME" ]
 then
@@ -144,6 +145,11 @@ echo "[+] git diff-index:"
 # git diff-index : to avoid doing the git commit failing if there are no changes to be commit
 git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
 
+
+if [ -n "${TAG_NAMG}" ]; then
+	git tag "${TAG_NAME}"
+fi
+
 echo "[+] Pushing git commit"
 # --set-upstream: sets de branch when pushing to a branch that does not exist
-git push "$GIT_CMD_REPOSITORY" --set-upstream "$TARGET_BRANCH"
+git push "$GIT_CMD_REPOSITORY" --set-upstream "$TARGET_BRANCH" --follow-tags

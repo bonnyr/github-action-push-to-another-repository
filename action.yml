@@ -44,6 +44,11 @@ inputs:
       replaced by the URL@commit in the origin repo
     default: Update from ORIGIN_COMMIT
     required: false
+  tag-name:
+    description: >-
+      [Optional] tag name to use for the commit in the output repository.
+    default: ''
+    required: false
   target-directory:
     description: '[Optional] The directory to wipe and replace in the target repository'
     default: ''
@@ -63,6 +68,7 @@ runs:
     - '${{ inputs.destination-repository-username }}'
     - '${{ inputs.target-branch }}'
     - '${{ inputs.commit-message }}'
+    - '${{ inputs.tag-name }}'
     - '${{ inputs.target-directory }}'
 branding:
   icon: git-commit
