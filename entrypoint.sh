@@ -147,7 +147,7 @@ echo "[+] git diff-index:"
 git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
 
 
-if [ -n "${TAG_NAMG}" ]; then
+if [ -n "${TAG_NAME}" ]; then
 	git tag -a -m "${TAG_MESSAGE}" "${TAG_NAME}"
 fi
 
