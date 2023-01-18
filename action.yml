@@ -49,6 +49,11 @@ inputs:
       [Optional] tag name to use for the commit in the output repository.
     default: ''
     required: false
+  tag-message:
+    description: >-
+      [Optional] message to use for the tag specified in `tag-name`.
+    default: ''
+    required: false
   target-directory:
     description: '[Optional] The directory to wipe and replace in the target repository'
     default: ''
@@ -69,6 +74,7 @@ runs:
     - '${{ inputs.target-branch }}'
     - '${{ inputs.commit-message }}'
     - '${{ inputs.tag-name }}'
+    - '${{ inputs.tag-message }}'
     - '${{ inputs.target-directory }}'
 branding:
   icon: git-commit
